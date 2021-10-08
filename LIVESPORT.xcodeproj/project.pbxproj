@@ -1,0 +1,471 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 51;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		001EB599B539E1BAA0199AF1 /* Pods_LIVESPORT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E56E80A6E48CADCBF7A5742 /* Pods_LIVESPORT.framework */; };
+		F46EDD85270E47D800D96E08 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46EDD84270E47D800D96E08 /* AppDelegate.swift */; };
+		F46EDD87270E47D800D96E08 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46EDD86270E47D800D96E08 /* SceneDelegate.swift */; };
+		F46EDD8C270E47D800D96E08 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F46EDD8A270E47D800D96E08 /* Main.storyboard */; };
+		F46EDD8F270E47D800D96E08 /* LIVESPORT.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F46EDD8D270E47D800D96E08 /* LIVESPORT.xcdatamodeld */; };
+		F46EDD91270E47F600D96E08 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F46EDD90270E47F600D96E08 /* Assets.xcassets */; };
+		F46EDD94270E47F600D96E08 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F46EDD92270E47F600D96E08 /* LaunchScreen.storyboard */; };
+		F46EDDB2270E55A100D96E08 /* CompetitionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46EDDB1270E55A100D96E08 /* CompetitionViewController.swift */; };
+		F46EDDC0270E8A9600D96E08 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46EDDBF270E8A9600D96E08 /* Network.swift */; };
+		F46EDDC3270E8AE000D96E08 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46EDDC2270E8AE000D96E08 /* Model.swift */; };
+		F46EDDC6270E8B1C00D96E08 /* Sport.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46EDDC5270E8B1C00D96E08 /* Sport.swift */; };
+		F46EDDE1270E9FDC00D96E08 /* SportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46EDDE0270E9FDC00D96E08 /* SportViewController.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		441BE5687E57AFCBEF077640 /* Pods-LIVESPORT.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LIVESPORT.debug.xcconfig"; path = "Target Support Files/Pods-LIVESPORT/Pods-LIVESPORT.debug.xcconfig"; sourceTree = "<group>"; };
+		8581D85B5C28A27479762E74 /* Pods-LIVESPORT.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LIVESPORT.release.xcconfig"; path = "Target Support Files/Pods-LIVESPORT/Pods-LIVESPORT.release.xcconfig"; sourceTree = "<group>"; };
+		8E56E80A6E48CADCBF7A5742 /* Pods_LIVESPORT.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LIVESPORT.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F46EDD81270E47D800D96E08 /* LIVESPORT.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LIVESPORT.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F46EDD84270E47D800D96E08 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		F46EDD86270E47D800D96E08 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		F46EDD8B270E47D800D96E08 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		F46EDD8E270E47D800D96E08 /* LIVESPORT.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LIVESPORT.xcdatamodel; sourceTree = "<group>"; };
+		F46EDD90270E47F600D96E08 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		F46EDD93270E47F600D96E08 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		F46EDD95270E47F600D96E08 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F46EDDB1270E55A100D96E08 /* CompetitionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompetitionViewController.swift; sourceTree = "<group>"; };
+		F46EDDBF270E8A9600D96E08 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
+		F46EDDC2270E8AE000D96E08 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		F46EDDC5270E8B1C00D96E08 /* Sport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sport.swift; sourceTree = "<group>"; };
+		F46EDDE0270E9FDC00D96E08 /* SportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportViewController.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F46EDD7E270E47D800D96E08 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				001EB599B539E1BAA0199AF1 /* Pods_LIVESPORT.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		6D032C25ED862F7171B04FC7 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				441BE5687E57AFCBEF077640 /* Pods-LIVESPORT.debug.xcconfig */,
+				8581D85B5C28A27479762E74 /* Pods-LIVESPORT.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		7CF2E96298845C7218E34EED /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8E56E80A6E48CADCBF7A5742 /* Pods_LIVESPORT.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F46EDD78270E47D700D96E08 = {
+			isa = PBXGroup;
+			children = (
+				F46EDD83270E47D800D96E08 /* LIVESPORT */,
+				F46EDD82270E47D800D96E08 /* Products */,
+				6D032C25ED862F7171B04FC7 /* Pods */,
+				7CF2E96298845C7218E34EED /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		F46EDD82270E47D800D96E08 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F46EDD81270E47D800D96E08 /* LIVESPORT.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F46EDD83270E47D800D96E08 /* LIVESPORT */ = {
+			isa = PBXGroup;
+			children = (
+				F46EDDA4270E503F00D96E08 /* Controller */,
+				F46EDDA3270E503900D96E08 /* View */,
+				F46EDDA2270E503000D96E08 /* Model */,
+				F46EDD84270E47D800D96E08 /* AppDelegate.swift */,
+				F46EDD86270E47D800D96E08 /* SceneDelegate.swift */,
+				F46EDD90270E47F600D96E08 /* Assets.xcassets */,
+				F46EDD95270E47F600D96E08 /* Info.plist */,
+				F46EDD8D270E47D800D96E08 /* LIVESPORT.xcdatamodeld */,
+			);
+			path = LIVESPORT;
+			sourceTree = "<group>";
+		};
+		F46EDDA2270E503000D96E08 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				F46EDDBF270E8A9600D96E08 /* Network.swift */,
+				F46EDDC2270E8AE000D96E08 /* Model.swift */,
+				F46EDDC5270E8B1C00D96E08 /* Sport.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		F46EDDA3270E503900D96E08 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F46EDD8A270E47D800D96E08 /* Main.storyboard */,
+				F46EDD92270E47F600D96E08 /* LaunchScreen.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		F46EDDA4270E503F00D96E08 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				F46EDDE0270E9FDC00D96E08 /* SportViewController.swift */,
+				F46EDDB1270E55A100D96E08 /* CompetitionViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		F46EDD80270E47D800D96E08 /* LIVESPORT */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F46EDD98270E47F600D96E08 /* Build configuration list for PBXNativeTarget "LIVESPORT" */;
+			buildPhases = (
+				EB7FE7508BDEFD69AF69C358 /* [CP] Check Pods Manifest.lock */,
+				F46EDD7D270E47D800D96E08 /* Sources */,
+				F46EDD7E270E47D800D96E08 /* Frameworks */,
+				F46EDD7F270E47D800D96E08 /* Resources */,
+				92969CCFF641EB3225C19851 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = LIVESPORT;
+			productName = LIVESPORT;
+			productReference = F46EDD81270E47D800D96E08 /* LIVESPORT.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F46EDD79270E47D700D96E08 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1240;
+				LastUpgradeCheck = 1240;
+				TargetAttributes = {
+					F46EDD80270E47D800D96E08 = {
+						CreatedOnToolsVersion = 12.4;
+					};
+				};
+			};
+			buildConfigurationList = F46EDD7C270E47D800D96E08 /* Build configuration list for PBXProject "LIVESPORT" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = F46EDD78270E47D700D96E08;
+			productRefGroup = F46EDD82270E47D800D96E08 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F46EDD80270E47D800D96E08 /* LIVESPORT */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F46EDD7F270E47D800D96E08 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F46EDD94270E47F600D96E08 /* LaunchScreen.storyboard in Resources */,
+				F46EDD91270E47F600D96E08 /* Assets.xcassets in Resources */,
+				F46EDD8C270E47D800D96E08 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		92969CCFF641EB3225C19851 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-LIVESPORT/Pods-LIVESPORT-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-LIVESPORT/Pods-LIVESPORT-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-LIVESPORT/Pods-LIVESPORT-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EB7FE7508BDEFD69AF69C358 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-LIVESPORT-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F46EDD7D270E47D800D96E08 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F46EDDB2270E55A100D96E08 /* CompetitionViewController.swift in Sources */,
+				F46EDDC6270E8B1C00D96E08 /* Sport.swift in Sources */,
+				F46EDDE1270E9FDC00D96E08 /* SportViewController.swift in Sources */,
+				F46EDD85270E47D800D96E08 /* AppDelegate.swift in Sources */,
+				F46EDD8F270E47D800D96E08 /* LIVESPORT.xcdatamodeld in Sources */,
+				F46EDD87270E47D800D96E08 /* SceneDelegate.swift in Sources */,
+				F46EDDC0270E8A9600D96E08 /* Network.swift in Sources */,
+				F46EDDC3270E8AE000D96E08 /* Model.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		F46EDD8A270E47D800D96E08 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F46EDD8B270E47D800D96E08 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		F46EDD92270E47F600D96E08 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F46EDD93270E47F600D96E08 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		F46EDD96270E47F600D96E08 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		F46EDD97270E47F600D96E08 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		F46EDD99270E47F600D96E08 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 441BE5687E57AFCBEF077640 /* Pods-LIVESPORT.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = LIVESPORT/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = KH.LIVESPORT;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		F46EDD9A270E47F600D96E08 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8581D85B5C28A27479762E74 /* Pods-LIVESPORT.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = LIVESPORT/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = KH.LIVESPORT;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F46EDD7C270E47D800D96E08 /* Build configuration list for PBXProject "LIVESPORT" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F46EDD96270E47F600D96E08 /* Debug */,
+				F46EDD97270E47F600D96E08 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F46EDD98270E47F600D96E08 /* Build configuration list for PBXNativeTarget "LIVESPORT" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F46EDD99270E47F600D96E08 /* Debug */,
+				F46EDD9A270E47F600D96E08 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		F46EDD8D270E47D800D96E08 /* LIVESPORT.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				F46EDD8E270E47D800D96E08 /* LIVESPORT.xcdatamodel */,
+			);
+			currentVersion = F46EDD8E270E47D800D96E08 /* LIVESPORT.xcdatamodel */;
+			path = LIVESPORT.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = F46EDD79270E47D700D96E08 /* Project object */;
+}

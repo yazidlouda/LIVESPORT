@@ -10,5 +10,5 @@ import Foundation
 class Model{
     
     static var sports:[Sport] = [Sport]();
-    
+    static var leagues:[League] = [League]()
 }

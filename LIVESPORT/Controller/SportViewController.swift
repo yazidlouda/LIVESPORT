@@ -20,10 +20,6 @@ class SportViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
     
     var sports = [Sport]()
-    
-    
-
-
     @IBOutlet weak var tableView: UITableView!
     var networkHandler=NetworkHandler()
     var sportType:String?

@@ -15,11 +15,11 @@ class SportViewController: UIViewController, UITableViewDataSource, UITableViewD
     func didUpdateAllSports(allSports: Sports) {
         DispatchQueue.main.async {
             Model.sports = allSports.sports
-            self.tableView.reloadData();
+            self.tableView.reloadData()
         }
     }
     
-    var sports = [Sport]()
+   
     @IBOutlet weak var tableView: UITableView!
     var networkHandler=NetworkHandler()
     var sportType:String?
@@ -28,18 +28,14 @@ class SportViewController: UIViewController, UITableViewDataSource, UITableViewD
         super.viewDidLoad()
         networkHandler.delegate = self
         networkHandler.getAllSports()
-        
-        
+       // networkHandler.getTeamsInLeague(leagueId: "4328")
+      
         tableView.delegate = self
         tableView.dataSource = self
-       
-       
+        
        
     }
     
-
-   
-
      func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         return Model.sports.count
@@ -53,17 +49,11 @@ class SportViewController: UIViewController, UITableViewDataSource, UITableViewD
         }
         
         let sp = Model.sports[indexPath.row]
-        
-        
        cell?.textLabel?.text = sp.strSport ?? "nothing"
         cell?.detailTextLabel?.text = sp.strSport ?? "no sport"
         return cell!
     }
     
-
-
-
-
      func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         sportType = Model.sports[indexPath.row].strSport;
         self.performSegue(withIdentifier: "showLeague", sender: self)

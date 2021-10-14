@@ -16,7 +16,7 @@ class CompetitionViewController: UIViewController , UITableViewDataSource, UITab
             self.tableView.reloadData();
         }
     }
-    
+    var row:Int?
     var leagues = [League]()
     @IBOutlet weak var tableView: UITableView!
     var networkHandler=NetworkHandler()
@@ -36,19 +36,31 @@ class CompetitionViewController: UIViewController , UITableViewDataSource, UITab
         
        cell?.textLabel?.text = leagueData.strLeague ?? "nothing"
         cell?.detailTextLabel?.text = leagueData.strLeague ?? "no league"
+       
         return cell!
     }
     
-   
-    
+     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        row=indexPath.row
+        //LeageViewController.strSport = Model.leagues[row!].idLeague!
+        LeageViewController.currentId = Model.leagues[row!].idLeague!
+        self.performSegue(withIdentifier: "showLeagueDetail", sender: (Any).self)
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showLeagueDetails"{
+           // let vc = segue.destination as! LeageViewController;
+            //vc.currentLeague = Model.leagues[row!]
+            //LeageViewController.strSport = Model.leagues[row!].idLeague!
+            LeageViewController.currentId = Model.leagues[row!].idLeague!
+            
+        }
+    }
     
     var sportType:String?;
     override func viewDidLoad() {
         super.viewDidLoad()
         networkHandler.leagueDelegate = self
         networkHandler.getAllLeagues(sportType: sportType ?? "Soccer")
-        print(sportType!)
-        
         tableView.delegate = self
         tableView.dataSource = self
         tableView.reloadData()

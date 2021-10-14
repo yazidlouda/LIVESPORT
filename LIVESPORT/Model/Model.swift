@@ -9,6 +9,11 @@ import Foundation
 
 class Model{
     
-    static var sports:[Sport] = [Sport]();
+    static var sports:[Sport] = [Sport]()
     static var leagues:[League] = [League]()
+    //static var favLeagues = [NSManagedObject]();
+    static var events = [Event]()
+    static var latestEvents = [Result]()
+    static var teams :[Team] = [Team]()
+    static var currentLeague:Leaguee?
 }

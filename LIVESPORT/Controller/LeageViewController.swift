@@ -26,7 +26,7 @@ class LeageViewController: UIViewController, EventsDataDelegate, TeamsDataDelega
     }
     
 
-    
+    var row:Int?
     @IBOutlet weak var tableView: UITableView!
     var networkHandler = NetworkHandler()
     var currentLeague:League?
@@ -112,7 +112,17 @@ extension LeageViewController : UITableViewDelegate , UITableViewDataSource{
         return 80;
     }
     
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        <#code#>
-//    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        row = indexPath.row
+        self.performSegue(withIdentifier: "showGameDetails", sender: (Any).self)
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showGameDetails"{
+            let vc = segue.destination as! GameViewController
+            
+            vc.currentEvent = Model.events[row!]
+            //vc.gDate = Model.events[row!].dateEvent
+            
+        }
+    }
 }

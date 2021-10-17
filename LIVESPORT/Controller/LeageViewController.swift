@@ -97,7 +97,7 @@ extension LeageViewController : UITableViewDelegate , UITableViewDataSource{
         }
         cell.gameDate.text = Model.events[indexPath.row].dateEvent
         
-        
+        cell.leagueView.layer.cornerRadius = 20
         cell.homeTeamScore.text = "\(homeScore)"
         cell.awayTeamScore.text = "\(awayScore)"
         cell.hometeamname.text = "\(homeTeamName)"
@@ -109,7 +109,7 @@ extension LeageViewController : UITableViewDelegate , UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 80;
+        return 105;
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

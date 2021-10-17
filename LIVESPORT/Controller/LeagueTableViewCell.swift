@@ -9,6 +9,7 @@ import UIKit
 
 class LeagueTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var leagueView: UIView!
     @IBOutlet weak var homeTeamLogo: UIImageView!
     @IBOutlet weak var awayTeamLogo: UIImageView!
     @IBOutlet weak var homeTeamScore: UILabel!
@@ -28,4 +29,8 @@ class LeagueTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
+    
+    func viewDidLoad(){
+        leagueView.layer.cornerRadius = 20
+    }
 }

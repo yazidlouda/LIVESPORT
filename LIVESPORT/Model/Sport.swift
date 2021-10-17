@@ -16,7 +16,7 @@ struct Sports: Codable {
 struct Sport: Codable {
     let idSport:String?
     let strSport: String?
-    
+    let strSportThumb: String?
 
     
 }

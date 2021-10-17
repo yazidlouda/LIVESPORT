@@ -16,6 +16,6 @@ struct League: Codable {
     let idLeague:String?
     let strLeague: String?
     let strSport: String?
-
+    let strBadge: String?
     
 }

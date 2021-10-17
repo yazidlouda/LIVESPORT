@@ -11,7 +11,7 @@ class Model{
     
     static var sports:[Sport] = [Sport]()
     static var leagues:[League] = [League]()
-    //static var favLeagues = [NSManagedObject]();
+    static var leagueDetails: [Leaguee] = [Leaguee]()
     static var events = [Event]()
     static var latestEvents = [Result]()
     static var teams :[Team] = [Team]()

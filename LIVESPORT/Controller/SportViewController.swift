@@ -9,7 +9,7 @@ import UIKit
 import SDWebImage
 
 
-private let reuseIdentifier = "sportCell"
+
 class SportViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, SportsDataDelegate {
     
     func didUpdateAllSports(allSports: Sports) {
@@ -32,26 +32,33 @@ class SportViewController: UIViewController, UITableViewDataSource, UITableViewD
       
         tableView.delegate = self
         tableView.dataSource = self
-        
-       
+        let cell = tableView.dequeueReusableCell(withIdentifier: "sportCell") as! SportTableViewCell
+        cell.sportView.layer.cornerRadius = 15
     }
     
      func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         return Model.sports.count
     }
-
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 155
+    }
   
      func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCell(withIdentifier: "countrycell")
-        if cell == nil {
-            cell = UITableViewCell(style: .subtitle, reuseIdentifier: "countrycell")
-        }
+        let cell = tableView.dequeueReusableCell(withIdentifier: "sportCell") as! SportTableViewCell
+       
         
         let sp = Model.sports[indexPath.row]
-       cell?.textLabel?.text = sp.strSport ?? "nothing"
-        cell?.detailTextLabel?.text = sp.strSport ?? "no sport"
-        return cell!
+        cell.sportName.text = sp.strSport
+        cell.sportImage.layer.cornerRadius = 15
+        cell.sportView.layer.cornerRadius = 15
+        for i in Model.sports{
+            if i.strSport == sp.strSport{
+                cell.sportImage.sd_setImage(with: URL(string: sp.strSportThumb!), placeholderImage:UIImage(named: "sports_icon"))
+            }
+        }
+        
+        return cell
     }
     
      func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

@@ -45,23 +45,16 @@ class CompetitionViewController: UIViewController , UITableViewDataSource, UITab
             }
             
         }
+        cell.leagueView.layer.cornerRadius = 50
+        cell.leagueBadge.layer.cornerRadius = 40
         cell.leagueBadge.sd_setImage(with: URL(string: leaguebadge), placeholderImage:UIImage(named: "sports_icon"))
-//        var cell = tableView.dequeueReusableCell(withIdentifier: "leaguecell")
-//        if cell == nil {
-//            cell = UITableViewCell(style: .subtitle, reuseIdentifier: "leaguecell")
-//        }
-//
-//
-//
-//
-//       cell?.textLabel?.text = leagueData.strLeague ?? "nothing"
-//        cell?.detailTextLabel?.text = leagueData.strLeague ?? "no league"
+
        
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 153
+        return 136
     }
      func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         row=indexPath.row
@@ -71,31 +64,25 @@ class CompetitionViewController: UIViewController , UITableViewDataSource, UITab
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showLeagueDetails"{
-           // let vc = segue.destination as! LeageViewController;
-            //vc.currentLeague = Model.leagues[row!]
-            //LeageViewController.strSport = Model.leagues[row!].idLeague!
+           
             LeageViewController.currentId = Model.leagues[row!].idLeague!
             
         }
     }
-    var x = ""
+    
     var sportType:String?;
     override func viewDidLoad() {
         super.viewDidLoad()
        
         networkHandler.leagueDelegate = self
         networkHandler.getAllLeagues(sportType: sportType ?? "Soccer")
-        networkHandler.getLeaguesDetails(ar: ["4346"])
+        //networkHandler.getLeaguesDetails(ar: ["4346"])
         tableView.delegate = self
         tableView.dataSource = self
         tableView.reloadData()
        
-        for i in Model.leagueDetails{
-            x = i.strLeague
-            
-        }
         // Do any additional setup after loading the view.
-        print("leagues are",x)
+        
     }
     
 

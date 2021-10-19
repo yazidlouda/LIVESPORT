@@ -24,7 +24,7 @@ class GameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        network.getTeamsInLeague(leagueId: currentEvent!.idLeague)
+        network.getTeamsInLeague(leagueId: currentEvent!.idLeague!)
 
         for i in Model.teams{
             if i.strTeam == currentEvent?.strHomeTeam{

@@ -1,17 +1,17 @@
 //
-//  SportTableViewCell.swift
+//  CountryTableViewCell.swift
 //  LIVESPORT
 //
-//  Created by Home on 10/17/21.
+//  Created by Home on 10/18/21.
 //
 
 import UIKit
 
-class SportTableViewCell: UITableViewCell {
+class CountryTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var sportView: UIView!
-    @IBOutlet weak var sportName: UILabel!
-    @IBOutlet weak var sportImage: UIImageView!
+    @IBOutlet weak var countryView: UIView!
+    @IBOutlet weak var countryName: UILabel!
+    @IBOutlet weak var countryImage: UIImageView!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -22,7 +22,5 @@ class SportTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    func viewDidLoad(){
-        
-    }
+
 }

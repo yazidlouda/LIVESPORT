@@ -29,8 +29,4 @@ class LeagueTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
-    
-    func viewDidLoad(){
-        leagueView.layer.cornerRadius = 20
-    }
 }

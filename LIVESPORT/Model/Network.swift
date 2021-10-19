@@ -18,7 +18,7 @@ protocol LeaguesDetailDelegate {
     func didUpdateDetailLeagues(leagues : [Leaguee])
 }
 protocol EventsDataDelegate {
-    func didUpdateAllEvents(allEvents : [Event]);
+    func didUpdateAllEvents(allEvents : Events);
 }
 protocol TeamsDataDelegate {
     func didUpdateTeama(teams : Teams);
@@ -30,6 +30,9 @@ protocol LatestEventsDelegate {
 protocol GameEventDelegate {
     func didUpdateGameEvent(gameEvent: Result)
 }
+protocol CountriesDataDelegate {
+    func didUpdateAllCountries(allCountries : Countries)
+}
 struct NetworkHandler{
     var delegate:SportsDataDelegate?
     var leagueDelegate:LeaguesDataDelegate?
@@ -38,6 +41,7 @@ struct NetworkHandler{
     var leaguedetailDelegate:LeaguesDetailDelegate?
     var latestEventDelegate:LatestEventsDelegate?
     var gameEventDelegate: GameEventDelegate?
+    var countriesDatadelegate: CountriesDataDelegate?
     
     func getAllSports() {
         
@@ -50,7 +54,18 @@ struct NetworkHandler{
             }
         }
     }
-
+    func getAllCountries() {
+        
+        let urlString = "https://www.thesportsdb.com/api/v1/json/1/all_countries.php"
+        let request = AF.request(urlString)
+        request.responseDecodable(of: Countries.self){ (response) in
+            if let data = response.value{
+                
+                self.countriesDatadelegate?.didUpdateAllCountries(allCountries: data)
+                
+            }
+        }
+    }
     //sportType:String
     func getAllLeagues(sportType:String?){
         var arr = [String]()
@@ -73,25 +88,32 @@ struct NetworkHandler{
     }
     func getLeaguesDetails(ar: [String]) {
         var arr = [Leaguee]()
+        
+       
         for id in ar{
             let urlString = "https://www.thesportsdb.com/api/v1/json/1/lookupleague.php?id=\(id)"
             let request = AF.request(urlString);
             request.responseDecodable(of: LeagueDetail.self){ (response) in
                 if let data = response.value{
-                    arr.append(data.leagues[0])
+                    for i in data.leagues{
+                        if i.idLeague == id{
+                            arr.append(i)
+                        }
+                    }
+
                     self.leaguedetailDelegate?.didUpdateDetailLeagues(leagues: arr)
                 }
             }
-        }
+       }
     }
-   
+    
     func getTeamsInLeague(leagueId: String) {
 
         
         let urlString = "https://www.thesportsdb.com/api/v1/json/1/lookup_all_teams.php?id=\(leagueId)"
-       // let replaced = urlString.replacingOccurrences(of: " ", with: "%20")
+        let replaced = urlString.replacingOccurrences(of: " ", with: "%20")
 
-        let request = AF.request(urlString)
+        let request = AF.request(replaced)
         request.responseDecodable(of: Teams.self){ (response) in
             if let data = response.value{
 
@@ -104,15 +126,12 @@ struct NetworkHandler{
     }
     
     func getAllEvent(leaueId : String){
-        var arr : [Event] = []
+       
         let urlString = "https://www.thesportsdb.com/api/v1/json/1/eventspastleague.php?id=\(leaueId)"
         let request = AF.request(urlString);
         request.responseDecodable(of: Events.self){ (response) in
             if let data = response.value{
-                for i in data.events{
-                    arr.append(i)
-                }
-                self.eventsDataDelegate?.didUpdateAllEvents(allEvents: arr)
+                self.eventsDataDelegate?.didUpdateAllEvents(allEvents: data)
                 
                 
             }
@@ -128,6 +147,8 @@ struct NetworkHandler{
             }
         }
     }
+    
+   
     func getGameEvent(eventId : String){
         
     }

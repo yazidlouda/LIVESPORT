@@ -8,10 +8,10 @@
 import UIKit
 import SDWebImage
 class LeageViewController: UIViewController, EventsDataDelegate, TeamsDataDelegate {
-    func didUpdateAllEvents(allEvents: [Event]) {
+    func didUpdateAllEvents(allEvents: Events) {
         DispatchQueue.main.async {
-            Model.events = allEvents
-            self.tableView.reloadData();
+            Model.events = allEvents.events
+            self.tableView.reloadData()
             
            
         }
@@ -36,20 +36,23 @@ class LeageViewController: UIViewController, EventsDataDelegate, TeamsDataDelega
     
     override func viewWillAppear(_ animated: Bool) {
         networkHandler.eventsDataDelegate = self
+        //networkHandler.getAllEvent(leaueId: "4328")
         networkHandler.teamsDataDelegate = self
-        networkHandler.getAllEvent(leaueId: LeageViewController.currentId)
-        networkHandler.getTeamsInLeague(leagueId: LeageViewController.currentId)
-
+        //networkHandler.getTeamsInLeague(leagueId: "4328")
+       networkHandler.getAllEvent(leaueId: LeageViewController.currentId)
+       networkHandler.getTeamsInLeague(leagueId: LeageViewController.currentId)
+        
+        
+        
+        tableView.delegate = self
+        tableView.dataSource = self
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        networkHandler.getAllEvent(leaueId: LeageViewController.currentId)
-        networkHandler.getTeamsInLeague(leagueId: LeageViewController.currentId)
-        tableView.delegate = self
-        tableView.dataSource = self
-        
-       
+
+        print(LeageViewController.currentId)
+   
     }
     
 
@@ -77,8 +80,20 @@ extension LeageViewController : UITableViewDelegate , UITableViewDataSource{
         
         let homeTeamName = Model.events[indexPath.row].strHomeTeam
         let awayTeamName = Model.events[indexPath.row].strAwayTeam
-        let homeScore:Int = Int(Model.events[indexPath.row].intHomeScore)!
-        let awayScore:Int = Int(Model.events[indexPath.row].intAwayScore)!
+        var homeScore = ""
+        var awayScore = ""
+        if Model.events[indexPath.row].intHomeScore != nil{
+            homeScore = Model.events[indexPath.row].intHomeScore!
+        }else{
+            homeScore = "N/A"
+           
+        }
+        if cell.gameTime.text == Model.events[indexPath.row].strTime{
+            awayScore = Model.events[indexPath.row].intAwayScore!
+        }else{
+            awayScore = "N/A"
+        }
+        //let awayScore:Int = Int(Model.events[indexPath.row].intAwayScore!)!
         
         for i in Model.teams{
             if i.strTeam == homeTeamName{
@@ -90,18 +105,21 @@ extension LeageViewController : UITableViewDelegate , UITableViewDataSource{
                 awayTeamLogo = i.strTeamBadge!
             }
         }
-        if Model.events[indexPath.row].dateEvent < calendar.description {
+        if Model.events[indexPath.row].dateEvent! < calendar.description && Model.events[indexPath.row].intHomeScore != nil{
             cell.gameTime.text = "Full Time"
+        }else if Model.events[indexPath.row].dateEvent! < calendar.description && Model.events[indexPath.row].intHomeScore == nil{
+            cell.gameTime.text = "Postponed"
+            
         }else{
             cell.gameTime.text = Model.events[indexPath.row].strTime
         }
         cell.gameDate.text = Model.events[indexPath.row].dateEvent
         
         cell.leagueView.layer.cornerRadius = 20
-        cell.homeTeamScore.text = "\(homeScore)"
-        cell.awayTeamScore.text = "\(awayScore)"
-        cell.hometeamname.text = "\(homeTeamName)"
-        cell.awayTeamName.text = "\(awayTeamName)"
+        cell.homeTeamScore.text = homeScore
+        cell.awayTeamScore.text = awayScore
+        cell.hometeamname.text = "\(homeTeamName ?? "no home team")"
+        cell.awayTeamName.text = "\(awayTeamName ?? "no away team")"
         cell.homeTeamLogo.sd_setImage(with: URL(string: homeTeamLogo), placeholderImage:UIImage(named: "sports_icon"))
         cell.awayTeamLogo.sd_setImage(with: URL(string: awayTeamLogo), placeholderImage:UIImage(named: "sports_icon"))
        
@@ -109,11 +127,12 @@ extension LeageViewController : UITableViewDelegate , UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 105;
+        return 105
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         row = indexPath.row
+       
         self.performSegue(withIdentifier: "showGameDetails", sender: (Any).self)
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -121,7 +140,7 @@ extension LeageViewController : UITableViewDelegate , UITableViewDataSource{
             let vc = segue.destination as! GameViewController
             
             vc.currentEvent = Model.events[row!]
-            //vc.gDate = Model.events[row!].dateEvent
+            
             
         }
     }

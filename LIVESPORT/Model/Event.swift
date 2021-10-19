@@ -13,17 +13,17 @@ struct Events : Codable {
 }
 struct Event : Codable {
     
-    let dateEvent : String
-    let idEvent : String
-    let idLeague : String
-    let intAwayScore : String
-    let intHomeScore : String
-    let strAwayTeam : String
-    let strEvent : String
-    let strHomeTeam : String
-    let strLeague : String
-    let strSeason : String
-    let strSport : String
-    let strTime : String
-    let strTimeLocal : String
+    let dateEvent : String?
+    let idEvent : String?
+    let idLeague : String?
+    let intAwayScore : String?
+    let intHomeScore : String?
+    let strAwayTeam : String?
+    let strEvent : String?
+    let strHomeTeam : String?
+    let strLeague : String?
+    let strSeason : String?
+    let strSport : String?
+    let strTime : String?
+    //let strTimeLocal : String
 }

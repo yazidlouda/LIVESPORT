@@ -16,4 +16,5 @@ class Model{
     static var latestEvents = [Result]()
     static var teams :[Team] = [Team]()
     static var currentLeague:Leaguee?
+    static var countries: [Country] = [Country]()
 }

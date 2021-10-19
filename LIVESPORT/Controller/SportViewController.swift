@@ -32,8 +32,7 @@ class SportViewController: UIViewController, UITableViewDataSource, UITableViewD
       
         tableView.delegate = self
         tableView.dataSource = self
-        let cell = tableView.dequeueReusableCell(withIdentifier: "sportCell") as! SportTableViewCell
-        cell.sportView.layer.cornerRadius = 15
+       
     }
     
      func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

@@ -7,7 +7,15 @@
 
 import UIKit
 import SDWebImage
-class CompetitionViewController: UIViewController , UITableViewDataSource, UITableViewDelegate, LeaguesDataDelegate,LeaguesDetailDelegate{
+class CompetitionViewController: UIViewController , UITableViewDataSource, UITableViewDelegate, LeaguesDataDelegate,LeaguesDetailDelegate,LeagueInCountriesDataDelegate{
+    
+    func didUpdateAllLeagueInCountries(allCountries: LeagueInCountries) {
+        DispatchQueue.main.async {
+            Model.leagueInCountries = allCountries.leagueInCountries
+            self.tableView.reloadData()
+        }
+    }
+    
     func didUpdateDetailLeagues(leagues: [Leaguee]) {
         DispatchQueue.main.async {
             Model.leagueDetails = leagues
@@ -29,6 +37,8 @@ class CompetitionViewController: UIViewController , UITableViewDataSource, UITab
     var networkHandler=NetworkHandler()
     var leaguebadge = ""
     var currentLeague = [""]
+    var country = ""
+    var arr : [String] = []
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return Model.leagues.count
     }
@@ -44,6 +54,9 @@ class CompetitionViewController: UIViewController , UITableViewDataSource, UITab
                 //cell.leagueBadge.sd_setImage(with: URL(string: i.strBadge!), placeholderImage:UIImage(named: "sports_icon"))
             }
             
+        }
+        for i in Model.leagues{
+            arr.append(i.idLeague!)
         }
         cell.leagueView.layer.cornerRadius = 50
         cell.leagueBadge.layer.cornerRadius = 40
@@ -74,12 +87,16 @@ class CompetitionViewController: UIViewController , UITableViewDataSource, UITab
     override func viewDidLoad() {
         super.viewDidLoad()
        
+        networkHandler.leagueInCountriesDelegate = self
         networkHandler.leagueDelegate = self
+        networkHandler.leaguedetailDelegate = self
         networkHandler.getAllLeagues(sportType: sportType ?? "Soccer")
-        //networkHandler.getLeaguesDetails(ar: ["4346"])
+        networkHandler.getAllLeagueInCountry(country: "England")
+        networkHandler.getLeaguesDetails(ar: arr)
         tableView.delegate = self
         tableView.dataSource = self
         tableView.reloadData()
+        
        
         // Do any additional setup after loading the view.
         

@@ -25,5 +25,6 @@ struct Event : Codable {
     let strSeason : String?
     let strSport : String?
     let strTime : String?
+    //let strCountry: String?
     //let strTimeLocal : String
 }

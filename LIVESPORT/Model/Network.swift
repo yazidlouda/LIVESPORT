@@ -33,6 +33,9 @@ protocol GameEventDelegate {
 protocol CountriesDataDelegate {
     func didUpdateAllCountries(allCountries : Countries)
 }
+protocol LeagueInCountriesDataDelegate {
+    func didUpdateAllLeagueInCountries(allCountries : LeagueInCountries)
+}
 struct NetworkHandler{
     var delegate:SportsDataDelegate?
     var leagueDelegate:LeaguesDataDelegate?
@@ -42,7 +45,7 @@ struct NetworkHandler{
     var latestEventDelegate:LatestEventsDelegate?
     var gameEventDelegate: GameEventDelegate?
     var countriesDatadelegate: CountriesDataDelegate?
-    
+    var leagueInCountriesDelegate: LeagueInCountriesDataDelegate?
     func getAllSports() {
         
         let urlString = "https://www.thesportsdb.com/api/v1/json/1/all_sports.php"
@@ -88,8 +91,6 @@ struct NetworkHandler{
     }
     func getLeaguesDetails(ar: [String]) {
         var arr = [Leaguee]()
-        
-       
         for id in ar{
             let urlString = "https://www.thesportsdb.com/api/v1/json/1/lookupleague.php?id=\(id)"
             let request = AF.request(urlString);
@@ -148,7 +149,16 @@ struct NetworkHandler{
         }
     }
     
-   
+    func getAllLeagueInCountry(country : String){
+        let urlString = "https://www.thesportsdb.com/api/v1/json/1/search_all_leagues.php?c=\(country)"
+        let request = AF.request(urlString);
+        request.responseDecodable(of: LeagueInCountries.self){ (response) in
+            if let data = response.value{
+                self.leagueInCountriesDelegate?.didUpdateAllLeagueInCountries(allCountries: data)
+            }
+        }
+
+    }
     func getGameEvent(eventId : String){
         
     }

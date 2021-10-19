@@ -17,4 +17,5 @@ class Model{
     static var teams :[Team] = [Team]()
     static var currentLeague:Leaguee?
     static var countries: [Country] = [Country]()
+    static var leagueInCountries: [LeagueInCountry] = [LeagueInCountry]()
 }

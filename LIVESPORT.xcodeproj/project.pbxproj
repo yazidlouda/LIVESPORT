@@ -35,6 +35,7 @@
 		F4AF92AC271DC569003A8153 /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4AF92AB271DC569003A8153 /* Country.swift */; };
 		F4F76BA6271E1CFD00E20BBD /* CountrySportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F76BA5271E1CFD00E20BBD /* CountrySportViewController.swift */; };
 		F4F76BA9271E1D2900E20BBD /* CountrySportCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F76BA8271E1D2900E20BBD /* CountrySportCollectionViewCell.swift */; };
+		F4F76BAC271E6E5600E20BBD /* LeagueInCountry.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F76BAB271E6E5600E20BBD /* LeagueInCountry.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -70,6 +71,7 @@
 		F4AF92AB271DC569003A8153 /* Country.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Country.swift; sourceTree = "<group>"; };
 		F4F76BA5271E1CFD00E20BBD /* CountrySportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountrySportViewController.swift; sourceTree = "<group>"; };
 		F4F76BA8271E1D2900E20BBD /* CountrySportCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountrySportCollectionViewCell.swift; sourceTree = "<group>"; };
+		F4F76BAB271E6E5600E20BBD /* LeagueInCountry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeagueInCountry.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,6 +149,7 @@
 				F46CF2B6271499F40063976E /* LastEvents.swift */,
 				F46CF2BC2715255B0063976E /* Player.swift */,
 				F4AF92AB271DC569003A8153 /* Country.swift */,
+				F4F76BAB271E6E5600E20BBD /* LeagueInCountry.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -302,6 +305,7 @@
 				F46EDD8F270E47D800D96E08 /* LIVESPORT.xcdatamodeld in Sources */,
 				F4AF92972719F9A9003A8153 /* CompetitionTableViewCell.swift in Sources */,
 				F4F76BA6271E1CFD00E20BBD /* CountrySportViewController.swift in Sources */,
+				F4F76BAC271E6E5600E20BBD /* LeagueInCountry.swift in Sources */,
 				F46EDD87270E47D800D96E08 /* SceneDelegate.swift in Sources */,
 				F48CFC4927121A8C00B30745 /* Team.swift in Sources */,
 				F46EDDC0270E8A9600D96E08 /* Network.swift in Sources */,

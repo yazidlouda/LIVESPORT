@@ -41,9 +41,6 @@ class LeageViewController: UIViewController, EventsDataDelegate, TeamsDataDelega
         //networkHandler.getTeamsInLeague(leagueId: "4328")
        networkHandler.getAllEvent(leaueId: LeageViewController.currentId)
        networkHandler.getTeamsInLeague(leagueId: LeageViewController.currentId)
-        
-        
-        
         tableView.delegate = self
         tableView.dataSource = self
     }
@@ -51,8 +48,6 @@ class LeageViewController: UIViewController, EventsDataDelegate, TeamsDataDelega
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        print(LeageViewController.currentId)
-   
     }
     
 
@@ -88,7 +83,7 @@ extension LeageViewController : UITableViewDelegate , UITableViewDataSource{
             homeScore = "N/A"
            
         }
-        if cell.gameTime.text == Model.events[indexPath.row].strTime{
+        if Model.events[indexPath.row].intAwayScore != nil{
             awayScore = Model.events[indexPath.row].intAwayScore!
         }else{
             awayScore = "N/A"

@@ -36,6 +36,8 @@
 		F4F76BA6271E1CFD00E20BBD /* CountrySportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F76BA5271E1CFD00E20BBD /* CountrySportViewController.swift */; };
 		F4F76BA9271E1D2900E20BBD /* CountrySportCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F76BA8271E1D2900E20BBD /* CountrySportCollectionViewCell.swift */; };
 		F4F76BAC271E6E5600E20BBD /* LeagueInCountry.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F76BAB271E6E5600E20BBD /* LeagueInCountry.swift */; };
+		F4F76BB3271E7D1A00E20BBD /* CountryLeagueViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F76BB2271E7D1A00E20BBD /* CountryLeagueViewController.swift */; };
+		F4F76BB6271E7D3500E20BBD /* CountryLeagueTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F76BB5271E7D3500E20BBD /* CountryLeagueTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -72,6 +74,8 @@
 		F4F76BA5271E1CFD00E20BBD /* CountrySportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountrySportViewController.swift; sourceTree = "<group>"; };
 		F4F76BA8271E1D2900E20BBD /* CountrySportCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountrySportCollectionViewCell.swift; sourceTree = "<group>"; };
 		F4F76BAB271E6E5600E20BBD /* LeagueInCountry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeagueInCountry.swift; sourceTree = "<group>"; };
+		F4F76BB2271E7D1A00E20BBD /* CountryLeagueViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryLeagueViewController.swift; sourceTree = "<group>"; };
+		F4F76BB5271E7D3500E20BBD /* CountryLeagueTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryLeagueTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -177,6 +181,8 @@
 				F4AF92A8271DC469003A8153 /* CountryTableViewCell.swift */,
 				F4F76BA5271E1CFD00E20BBD /* CountrySportViewController.swift */,
 				F4F76BA8271E1D2900E20BBD /* CountrySportCollectionViewCell.swift */,
+				F4F76BB2271E7D1A00E20BBD /* CountryLeagueViewController.swift */,
+				F4F76BB5271E7D3500E20BBD /* CountryLeagueTableViewCell.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -298,6 +304,7 @@
 				F46EDDB2270E55A100D96E08 /* CompetitionViewController.swift in Sources */,
 				F46EDDFB2710FD8700D96E08 /* League.swift in Sources */,
 				F4F76BA9271E1D2900E20BBD /* CountrySportCollectionViewCell.swift in Sources */,
+				F4F76BB6271E7D3500E20BBD /* CountryLeagueTableViewCell.swift in Sources */,
 				F46EDDC6270E8B1C00D96E08 /* Sport.swift in Sources */,
 				F46EDDE1270E9FDC00D96E08 /* SportViewController.swift in Sources */,
 				F48CFC4627121A7A00B30745 /* Event.swift in Sources */,
@@ -307,6 +314,7 @@
 				F4F76BA6271E1CFD00E20BBD /* CountrySportViewController.swift in Sources */,
 				F4F76BAC271E6E5600E20BBD /* LeagueInCountry.swift in Sources */,
 				F46EDD87270E47D800D96E08 /* SceneDelegate.swift in Sources */,
+				F4F76BB3271E7D1A00E20BBD /* CountryLeagueViewController.swift in Sources */,
 				F48CFC4927121A8C00B30745 /* Team.swift in Sources */,
 				F46EDDC0270E8A9600D96E08 /* Network.swift in Sources */,
 				F48CFC4F2714934C00B30745 /* LeageViewController.swift in Sources */,

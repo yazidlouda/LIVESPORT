@@ -8,7 +8,7 @@
 import UIKit
 
 class CountryViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, CountriesDataDelegate{
-    
+    var row : Int?
     func didUpdateAllCountries(allCountries: Countries) {
         DispatchQueue.main.async {
             Model.countries = allCountries.countries
@@ -47,10 +47,18 @@ class CountryViewController: UIViewController, UITableViewDataSource, UITableVie
         
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-      // sportType = Model.sports[indexPath.row].strSport;
+        row = indexPath.row
        self.performSegue(withIdentifier: "showCountrySport", sender: self)
    }
-  
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showCountrySport"{
+            let vc = segue.destination as! CountrySportViewController
+            
+            vc.country = Model.countries[row!].name_en
+            
+            
+        }
+    }
 
   
 

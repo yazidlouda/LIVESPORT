@@ -87,11 +87,11 @@ class CompetitionViewController: UIViewController , UITableViewDataSource, UITab
     override func viewDidLoad() {
         super.viewDidLoad()
        
-        networkHandler.leagueInCountriesDelegate = self
+        //networkHandler.leagueInCountriesDelegate = self
         networkHandler.leagueDelegate = self
         networkHandler.leaguedetailDelegate = self
         networkHandler.getAllLeagues(sportType: sportType ?? "Soccer")
-        networkHandler.getAllLeagueInCountry(country: "England")
+        //networkHandler.getAllLeagueInCountry(country: "England")
         networkHandler.getLeaguesDetails(ar: arr)
         tableView.delegate = self
         tableView.dataSource = self

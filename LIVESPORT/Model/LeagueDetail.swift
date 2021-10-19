@@ -12,7 +12,7 @@ struct LeagueDetail: Codable {
 }
 
 // MARK: - League
-struct Leaguee: Codable {
+struct Leaguee: Codable,Equatable, Hashable {
     let idLeague: String
     let strSport:String
     let strLeague: String
@@ -21,4 +21,5 @@ struct Leaguee: Codable {
     let strLogo: String
     let strNaming: String
     let strBadge:String
+    let strCountry: String
 }

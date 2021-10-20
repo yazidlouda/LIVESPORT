@@ -2,10 +2,10 @@
 #LIVESPORT App ia an app that displays sports, leagues in specific sport,and results for the last 15 events for each league
 #Technologies used:
 --
-Markup : * Swift.
-Markup : * RESTful API.
-Markup : * Alamofire.
-Markup : * SDWebImage.
+ - Swift.
+ - RESTful API.
+ - Alamofire.
+ - SDWebImage.
 
 ![screen-gif](/LIVESPORT/Assets.xcassets/ezgif.com-video-to-gif.dataset/ezgif.com-video-to-gif.gif)
 --

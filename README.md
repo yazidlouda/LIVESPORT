@@ -1,11 +1,11 @@
 # LIVESPORT
-##LIVESPORT App ia an app that displays sports, leagues in specific sport,and results for the last 15 events for each league
+#LIVESPORT App ia an app that displays sports, leagues in specific sport,and results for the last 15 events for each league
 #Technologies used:
 --
-*Swift.
-*RESTful API.
-*Alamofire.
-*SDWebImage.
+Markup : * Swift.
+Markup : * RESTful API.
+Markup : * Alamofire.
+Markup : * SDWebImage.
 
 ![screen-gif](/LIVESPORT/Assets.xcassets/ezgif.com-video-to-gif.dataset/ezgif.com-video-to-gif.gif)
 --

@@ -1,5 +1,5 @@
 # LIVESPORT
-#LIVESPORT App ia an app that displays sports, leagues in specific sport,and results for the last 15 events for each league
+LIVESPORT App ia an app that displays sports, leagues in specific sport,and results for the last 15 events for each league
 #Technologies used:
 --
  - Swift.

@@ -19,7 +19,7 @@ class SportViewController: UIViewController, UITableViewDataSource, UITableViewD
         }
     }
     
-   
+    var filteredData:[Sport] = []
     @IBOutlet weak var tableView: UITableView!
     var networkHandler=NetworkHandler()
     var sportType:String?
@@ -36,8 +36,12 @@ class SportViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
     
      func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        return Model.sports.count
+        for i in Model.sports{
+            if i.strFormat == "TeamvsTeam"{
+                filteredData.append(i)
+            }
+        }
+        return filteredData.count
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 155
@@ -47,7 +51,7 @@ class SportViewController: UIViewController, UITableViewDataSource, UITableViewD
         let cell = tableView.dequeueReusableCell(withIdentifier: "sportCell") as! SportTableViewCell
        
         
-        let sp = Model.sports[indexPath.row]
+        let sp = filteredData[indexPath.row]
         cell.sportName.text = sp.strSport
         cell.sportImage.layer.cornerRadius = 15
         cell.sportView.layer.cornerRadius = 15
@@ -61,7 +65,7 @@ class SportViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
     
      func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        sportType = Model.sports[indexPath.row].strSport;
+        sportType = filteredData[indexPath.row].strSport;
         self.performSegue(withIdentifier: "showLeague", sender: self)
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

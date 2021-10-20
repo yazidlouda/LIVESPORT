@@ -10,6 +10,7 @@ import SDWebImage
 class CountrySportViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, SportsDataDelegate{
     var row : Int?
     var country : String?
+    var sportType : String?
     func didUpdateAllSports(allSports: Sports) {
         DispatchQueue.main.async {
             Model.sports = allSports.sports
@@ -24,7 +25,7 @@ class CountrySportViewController: UIViewController, UICollectionViewDelegate, UI
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         row = indexPath.row
-        
+        sportType = Model.sports[indexPath.row].strSport
         self.performSegue(withIdentifier: "showCountryLeague", sender: (Any).self)
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -32,7 +33,7 @@ class CountrySportViewController: UIViewController, UICollectionViewDelegate, UI
             let vc = segue.destination as! CountryLeagueViewController
             
             vc.country = country!
-            
+            vc.sportType = sportType!
             
         }
     }

@@ -11,10 +11,10 @@ import SDWebImage
 class CountryLeagueViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, LeaguesDataDelegate,LeaguesDetailDelegate,LeagueInCountriesDataDelegate {
     
     var networkHandler = NetworkHandler()
-    var sportType = "Soccer"
+    var sportType = ""
     var arr: [String] = []
     var leaguess = Set<Leaguee>()
-    
+    var row:Int?
     var country = ""
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -39,7 +39,20 @@ class CountryLeagueViewController: UIViewController, UITableViewDataSource, UITa
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 130
     }
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+       row=indexPath.row
+        let arr = Array(leaguess)
+       //LeageViewController.strSport = Model.leagues[row!].idLeague!
+        LeageViewController.currentId = arr[row!].idLeague
+       self.performSegue(withIdentifier: "showCountryLeagueDetail", sender: (Any).self)
+   }
+   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+       if segue.identifier == "showCountryLeagueDetail"{
+        let arr = Array(leaguess)
+           LeageViewController.currentId = arr[row!].idLeague
+           
+       }
+   }
    
     
     func didUpdateLeagues(leagues: [League]) {
@@ -52,11 +65,7 @@ class CountryLeagueViewController: UIViewController, UITableViewDataSource, UITa
     
     func didUpdateDetailLeagues(leagues: [Leaguee]) {
         DispatchQueue.main.async {
-//            for i in leagues{
-//                if i.strCountry == "England"{
-//                    self.leaguess.append(i)
-//                }
-//            }
+
             Model.leagueDetails = leagues
             self.tableView.reloadData()
         }

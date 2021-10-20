@@ -67,7 +67,7 @@ extension LeageViewController : UITableViewDelegate , UITableViewDataSource{
         let date = Date()
         let calendar = Calendar.current
         let hour = calendar.component(.hour, from: date)
-      //  let minutes = calendar.component(.minute, from: date)
+        let minutes = calendar.component(.minute, from: date)
         var homeTeamLogo = ""
         var awayTeamLogo = ""
         
@@ -80,13 +80,13 @@ extension LeageViewController : UITableViewDelegate , UITableViewDataSource{
         if Model.events[indexPath.row].intHomeScore != nil{
             homeScore = Model.events[indexPath.row].intHomeScore!
         }else{
-            homeScore = "N/A"
+            homeScore = "-"
            
         }
         if Model.events[indexPath.row].intAwayScore != nil{
             awayScore = Model.events[indexPath.row].intAwayScore!
         }else{
-            awayScore = "N/A"
+            awayScore = "-"
         }
         //let awayScore:Int = Int(Model.events[indexPath.row].intAwayScore!)!
         
@@ -100,9 +100,13 @@ extension LeageViewController : UITableViewDelegate , UITableViewDataSource{
                 awayTeamLogo = i.strTeamBadge!
             }
         }
+        let time = Model.events[indexPath.row].strTime?.split(separator: ":")
         if Model.events[indexPath.row].dateEvent! < calendar.description && Model.events[indexPath.row].intHomeScore != nil{
             cell.gameTime.text = "Full Time"
-        }else if Model.events[indexPath.row].dateEvent! < calendar.description && Model.events[indexPath.row].intHomeScore == nil{
+        }else if Model.events[indexPath.row].dateEvent! == calendar.description && time![1] < minutes.description && Model.events[indexPath.row].intHomeScore == nil{
+            cell.gameTime.text = "in progress"
+        }
+        else if Model.events[indexPath.row].dateEvent! > calendar.description && Model.events[indexPath.row].intHomeScore == nil{
             cell.gameTime.text = "Postponed"
             
         }else{

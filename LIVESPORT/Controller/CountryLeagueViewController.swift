@@ -9,7 +9,57 @@ import UIKit
 import SDWebImage
 
 class CountryLeagueViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, LeaguesDataDelegate,LeaguesDetailDelegate,LeagueInCountriesDataDelegate {
+    func didUpdateLeagues(leagues: [League]) {
+        DispatchQueue.main.async {
+            
+            Model.leagues = leagues
+            self.tableView.reloadData()
+        }
+    }
     
+    func didUpdateDetailLeagues(leagues: [Leaguee]) {
+        DispatchQueue.main.async {
+
+            Model.leagueDetails = leagues
+            self.tableView.reloadData()
+        }
+    }
+    
+    func didUpdateAllLeagueInCountries(allCountries: LeagueInCountries) {
+        DispatchQueue.main.async {
+            Model.leagueInCountries = allCountries.leagueInCountries
+            self.tableView.reloadData()
+        }
+    }
+    override func viewWillAppear(_ animated: Bool){
+        
+        indicator.startAnimating()
+        indicator.hidesWhenStopped = true
+        networkHandler.leagueDelegate = self
+        networkHandler.leaguedetailDelegate = self
+        networkHandler.getAllLeagues(sportType: sportType )
+        
+        networkHandler.getLeaguesDetails(ar: arr)
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.reloadData()
+    }
+//    override func viewDidLoad() {
+//        super.viewDidLoad()
+//        tableView.reloadData()
+//        indicator.startAnimating()
+//        indicator.hidesWhenStopped = true
+//        networkHandler.leagueDelegate = self
+//        networkHandler.leaguedetailDelegate = self
+//        networkHandler.getAllLeagues(sportType: sportType )
+//
+//        networkHandler.getLeaguesDetails(ar: arr)
+//        tableView.delegate = self
+//        tableView.dataSource = self
+////        tableView.reloadData()
+//
+//    }
+    @IBOutlet weak var indicator: UIActivityIndicatorView!
     var networkHandler = NetworkHandler()
     var sportType = ""
     var arr: [String] = []
@@ -46,6 +96,14 @@ class CountryLeagueViewController: UIViewController, UITableViewDataSource, UITa
         LeageViewController.currentId = arr[row!].idLeague
        self.performSegue(withIdentifier: "showCountryLeagueDetail", sender: (Any).self)
    }
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if(indexPath.row == leaguess.count - 1){
+            indicator.stopAnimating()
+        }else if leaguess.count == 0{
+            indicator.stopAnimating()
+        }
+        
+    }
    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
        if segue.identifier == "showCountryLeagueDetail"{
         let arr = Array(leaguess)
@@ -55,45 +113,12 @@ class CountryLeagueViewController: UIViewController, UITableViewDataSource, UITa
    }
    
     
-    func didUpdateLeagues(leagues: [League]) {
-        DispatchQueue.main.async {
-            
-            Model.leagues = leagues
-            self.tableView.reloadData()
-        }
-    }
-    
-    func didUpdateDetailLeagues(leagues: [Leaguee]) {
-        DispatchQueue.main.async {
-
-            Model.leagueDetails = leagues
-            self.tableView.reloadData()
-        }
-    }
-    
-    func didUpdateAllLeagueInCountries(allCountries: LeagueInCountries) {
-        DispatchQueue.main.async {
-            Model.leagueInCountries = allCountries.leagueInCountries
-            self.tableView.reloadData()
-        }
-    }
+   
     
 
     @IBOutlet weak var tableView: UITableView!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        networkHandler.leagueDelegate = self
-        networkHandler.leaguedetailDelegate = self
-        networkHandler.getAllLeagues(sportType: sportType )
-        
-        networkHandler.getLeaguesDetails(ar: arr)
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.reloadData()
-        
-    }
+  
     
 
     

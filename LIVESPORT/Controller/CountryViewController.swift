@@ -7,7 +7,14 @@
 
 import UIKit
 
-class CountryViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, CountriesDataDelegate,UISearchBarDelegate,LeaguesDetailDelegate{
+class CountryViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, CountriesDataDelegate,UISearchBarDelegate,LeaguesDetailDelegate,AllLeaguesDelegate{
+    func didUpdateAllLeagues(leagues: [League]) {
+        DispatchQueue.main.async {
+            Model.leagues = leagues
+            self.tableView.reloadData()
+        }
+    }
+    
     func didUpdateDetailLeagues(leagues: [Leaguee]) {
         DispatchQueue.main.async {
             Model.leagueDetails = leagues
@@ -22,14 +29,13 @@ class CountryViewController: UIViewController, UITableViewDataSource, UITableVie
     @IBOutlet weak var countrySearchBar: UISearchBar!
     override func viewDidLoad() {
         super.viewDidLoad()
-      
+        networkHandler.allLeaguesDataDelegate = self
         networkHandler.countriesDatadelegate = self
         networkHandler.getAllCountries()
-       
+        networkHandler.getAllLeague()
         tableView.delegate = self
         tableView.dataSource = self
-        
-        
+
         filteredData.sort(by: { $0.name_en! < $1.name_en! })
         
         
@@ -44,12 +50,10 @@ class CountryViewController: UIViewController, UITableViewDataSource, UITableVie
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
             for i in Model.countries{
-                
+
                     filteredData.append(i)
-                
-                
-            
         }
+
         
         filteredData.sort(by: { $0.name_en! < $1.name_en! })
         

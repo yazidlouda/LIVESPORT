@@ -8,6 +8,8 @@
 import UIKit
 import SDWebImage
 class LeageViewController: UIViewController, EventsDataDelegate, TeamsDataDelegate {
+    
+    
     func didUpdateAllEvents(allEvents: Events) {
         DispatchQueue.main.async {
             Model.events = allEvents.events
@@ -32,22 +34,25 @@ class LeageViewController: UIViewController, EventsDataDelegate, TeamsDataDelega
     var currentLeague:League?
     static var currentId = ""
     var selectedTeam:Team?
-    //static var strSport = ""
+    //var teamId = [""]
+    
     
     override func viewWillAppear(_ animated: Bool) {
         networkHandler.eventsDataDelegate = self
-        //networkHandler.getAllEvent(leaueId: "4328")
         networkHandler.teamsDataDelegate = self
-        //networkHandler.getTeamsInLeague(leagueId: "4328")
+
        networkHandler.getAllEvent(leaueId: LeageViewController.currentId)
        networkHandler.getTeamsInLeague(leagueId: LeageViewController.currentId)
+        
+        
+        
         tableView.delegate = self
         tableView.dataSource = self
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
     }
     
 
@@ -64,6 +69,7 @@ extension LeageViewController : UITableViewDelegate , UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+       
         let date = Date()
         let calendar = Calendar.current
         let hour = calendar.component(.hour, from: date)

@@ -9,6 +9,7 @@ import UIKit
 import SDWebImage
 class CompetitionViewController: UIViewController , UITableViewDataSource, UITableViewDelegate, LeaguesDataDelegate,LeaguesDetailDelegate,LeagueInCountriesDataDelegate{
     
+    
     func didUpdateAllLeagueInCountries(allCountries: LeagueInCountries) {
         DispatchQueue.main.async {
             Model.leagueInCountries = allCountries.leagueInCountries
@@ -31,6 +32,24 @@ class CompetitionViewController: UIViewController , UITableViewDataSource, UITab
             self.tableView.reloadData()
         }
     }
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        
+       
+        networkHandler.leagueDelegate = self
+        networkHandler.leaguedetailDelegate = self
+        networkHandler.getAllLeagues(sportType: sportType ?? "Soccer")
+        
+        networkHandler.getLeaguesDetails(ar: arr)
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.reloadData()
+        
+        
+        // Do any additional setup after loading the view.
+        
+    }
     var row:Int?
     var leagues = [League]()
     @IBOutlet weak var tableView: UITableView!
@@ -39,6 +58,7 @@ class CompetitionViewController: UIViewController , UITableViewDataSource, UITab
     var currentLeague = [""]
     var country = ""
     var arr : [String] = []
+   
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return Model.leagues.count
     }
@@ -71,36 +91,21 @@ class CompetitionViewController: UIViewController , UITableViewDataSource, UITab
     }
      func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         row=indexPath.row
-        //LeageViewController.strSport = Model.leagues[row!].idLeague!
+        
         LeageViewController.currentId = Model.leagues[row!].idLeague!
+        
         self.performSegue(withIdentifier: "showLeagueDetail", sender: (Any).self)
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showLeagueDetails"{
            
             LeageViewController.currentId = Model.leagues[row!].idLeague!
-            
+        
         }
     }
     
     var sportType:String?;
-    override func viewDidLoad() {
-        super.viewDidLoad()
-       
-        //networkHandler.leagueInCountriesDelegate = self
-        networkHandler.leagueDelegate = self
-        networkHandler.leaguedetailDelegate = self
-        networkHandler.getAllLeagues(sportType: sportType ?? "Soccer")
-        //networkHandler.getAllLeagueInCountry(country: "England")
-        networkHandler.getLeaguesDetails(ar: arr)
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.reloadData()
-        
-       
-        // Do any additional setup after loading the view.
-        
-    }
+   
     
 
     

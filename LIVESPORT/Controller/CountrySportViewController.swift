@@ -44,6 +44,7 @@ class CountrySportViewController: UIViewController, UICollectionViewDelegate, UI
         cell.image.sd_setImage(with: URL(string: sp.strSportThumb!), placeholderImage:UIImage(named: "sports_icon"))
         cell.sportName.text = sp.strSport
         cell.layer.cornerRadius = 15
+        cell.image.layer.cornerRadius = 15
         return cell
     }
     var networkHandler=NetworkHandler()
@@ -51,6 +52,7 @@ class CountrySportViewController: UIViewController, UICollectionViewDelegate, UI
     @IBOutlet weak var countrySportCollectionView: UICollectionView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        countrySportCollectionView.reloadData()
         networkHandler.delegate = self
         networkHandler.getAllSports()
         

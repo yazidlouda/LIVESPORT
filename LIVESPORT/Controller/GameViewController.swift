@@ -7,7 +7,14 @@
 
 import UIKit
 import SDWebImage
-class GameViewController: UIViewController {
+class GameViewController: UIViewController,LeaguesDataDelegate {
+    func didUpdateLeagues(leagues: [League]) {
+        DispatchQueue.main.async {
+            Model.leagues = leagues
+            
+        }
+    }
+    
 
     var currentEvent : Event?
     var currentTeams : [Team] = []
@@ -19,11 +26,13 @@ class GameViewController: UIViewController {
     @IBOutlet weak var awayTeamScore: UILabel!
     @IBOutlet weak var gamedate: UILabel!
     @IBOutlet weak var leagueName: UILabel!
+    @IBOutlet weak var leaguebadge: UIImageView!
     
     var network = NetworkHandler()
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        network.leagueDelegate = self
+        network.getAllLeagues(sportType: currentEvent?.strSport)
         network.getTeamsInLeague(leagueId: currentEvent!.idLeague!)
 
         for i in Model.teams{
@@ -34,7 +43,14 @@ class GameViewController: UIViewController {
                 awayTeamLogo.sd_setImage(with: URL(string: i.strTeamBadge!), placeholderImage:UIImage(named: "sports_icon"))
             }
         }
-        
+       
+       
+        for x in Model.leagueDetails{
+            if x.idLeague == currentEvent?.idLeague{
+                leaguebadge.sd_setImage(with: URL(string: x.strBadge),placeholderImage:UIImage(named: "sports_icon"))
+            }
+            
+        }
         gamedate.text = currentEvent?.dateEvent
         leagueName.text = currentEvent?.strLeague
         

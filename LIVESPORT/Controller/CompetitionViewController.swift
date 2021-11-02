@@ -71,7 +71,7 @@ class CompetitionViewController: UIViewController , UITableViewDataSource, UITab
         for i in Model.leagueDetails{
             if i.strLeague == Model.leagues[indexPath.row].strLeague{
                 leaguebadge = i.strBadge
-                //cell.leagueBadge.sd_setImage(with: URL(string: i.strBadge!), placeholderImage:UIImage(named: "sports_icon"))
+               
             }
             
         }

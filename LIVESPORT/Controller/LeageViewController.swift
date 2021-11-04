@@ -34,7 +34,7 @@ class LeageViewController: UIViewController, EventsDataDelegate, TeamsDataDelega
     var currentLeague:League?
     static var currentId = ""
     var selectedTeam:Team?
-    //var teamId = [""]
+   
     
     
     override func viewWillAppear(_ animated: Bool) {
@@ -70,10 +70,7 @@ extension LeageViewController : UITableViewDelegate , UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
        
-        let date = Date()
-        let calendar = Calendar.current
-        let hour = calendar.component(.hour, from: date)
-        let minutes = calendar.component(.minute, from: date)
+
         var homeTeamLogo = ""
         var awayTeamLogo = ""
         
@@ -94,7 +91,7 @@ extension LeageViewController : UITableViewDelegate , UITableViewDataSource{
         }else{
             awayScore = "-"
         }
-        //let awayScore:Int = Int(Model.events[indexPath.row].intAwayScore!)!
+        
         
         for i in Model.teams{
             if i.strTeam == homeTeamName{
@@ -106,15 +103,11 @@ extension LeageViewController : UITableViewDelegate , UITableViewDataSource{
                 awayTeamLogo = i.strTeamBadge!
             }
         }
-        let time = Model.events[indexPath.row].strTime?.split(separator: ":")
-        if Model.events[indexPath.row].dateEvent! < calendar.description && Model.events[indexPath.row].intHomeScore != nil{
-            cell.gameTime.text = "Full Time"
-        }else if Model.events[indexPath.row].dateEvent! == calendar.description && time![1] < minutes.description && Model.events[indexPath.row].intHomeScore == nil{
-            cell.gameTime.text = "in progress"
-        }
-        else if Model.events[indexPath.row].dateEvent! > calendar.description && Model.events[indexPath.row].intHomeScore == nil{
+  
+        if Model.events[indexPath.row].strStatus == "Match Finished" {
+            cell.gameTime.text = "FT"
+        }else if Model.events[indexPath.row].strPostponed == "yes"{
             cell.gameTime.text = "Postponed"
-            
         }else{
             cell.gameTime.text = Model.events[indexPath.row].strTime
         }
@@ -143,10 +136,12 @@ extension LeageViewController : UITableViewDelegate , UITableViewDataSource{
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showGameDetails"{
             let vc = segue.destination as! GameViewController
-            
             vc.currentEvent = Model.events[row!]
             
-            
+            InfoViewController.currentEvent = Model.events[row!]
+            TableViewController.currentEvent = Model.events[row!]
         }
+         
+        
     }
 }

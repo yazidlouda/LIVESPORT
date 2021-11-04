@@ -7,7 +7,14 @@
 
 import UIKit
 import SDWebImage
-class GameViewController: UIViewController,LeaguesDataDelegate {
+class GameViewController: UIViewController,LeaguesDataDelegate,EventsDataDelegate {
+    func didUpdateAllEvents(allEvents: Events) {
+        DispatchQueue.main.async {
+            Model.events = allEvents.events
+            
+        }
+    }
+    
     func didUpdateLeagues(leagues: [League]) {
         DispatchQueue.main.async {
             Model.leagues = leagues
@@ -16,6 +23,13 @@ class GameViewController: UIViewController,LeaguesDataDelegate {
     }
     
 
+   
+    @IBOutlet weak var infoView: UIView!
+    @IBOutlet weak var tableView: UIView!
+    
+    @IBOutlet weak var leagueView: UIView!
+    
+    @IBOutlet weak var lbb: UILabel!
     var currentEvent : Event?
     var currentTeams : [Team] = []
     @IBOutlet weak var homeTeamLogo: UIImageView!
@@ -24,17 +38,50 @@ class GameViewController: UIViewController,LeaguesDataDelegate {
     @IBOutlet weak var awayTeamLogo: UIImageView!
     @IBOutlet weak var awayTeamName: UILabel!
     @IBOutlet weak var awayTeamScore: UILabel!
-    @IBOutlet weak var gamedate: UILabel!
-    @IBOutlet weak var leagueName: UILabel!
-    @IBOutlet weak var leaguebadge: UIImageView!
+    
+   
+    @IBAction func segmentBar(_ sender: UISegmentedControl) {
+        switch sender.selectedSegmentIndex{
+        case 0:
+            infoView.isHidden = false
+            tableView.isHidden = true
+            lbb.isHidden = true
+        case 1:
+            infoView.isHidden = true
+            tableView.isHidden = true
+            lbb.isHidden = false
+            lbb.text = "Coming Soon ...."
+        case 2:
+            infoView.isHidden = true
+            tableView.isHidden = true
+            lbb.isHidden = false
+            lbb.text = "Coming Soon ...."
+        case 3:
+            infoView.isHidden = true
+            tableView.isHidden = true
+            lbb.isHidden = false
+            lbb.text = "Coming Soon ...."
+        case 4:
+            infoView.isHidden = true
+            tableView.isHidden = false
+            lbb.isHidden = true
+        default:
+            lbb.text = "Zehor"
+        }
+    }
     
     var network = NetworkHandler()
     override func viewDidLoad() {
         super.viewDidLoad()
+        infoView.isHidden = false
+        tableView.isHidden = true
+        lbb.isHidden = true
+        //lbb.text = "Hello"
+        network.eventsDataDelegate = self
         network.leagueDelegate = self
         network.getAllLeagues(sportType: currentEvent?.strSport)
         network.getTeamsInLeague(leagueId: currentEvent!.idLeague!)
-
+        network.getAllEvent(leaueId: (currentEvent?.idLeague!)!)
         for i in Model.teams{
             if i.strTeam == currentEvent?.strHomeTeam{
                 //currentTeams.append(i)
@@ -43,21 +90,11 @@ class GameViewController: UIViewController,LeaguesDataDelegate {
                 awayTeamLogo.sd_setImage(with: URL(string: i.strTeamBadge!), placeholderImage:UIImage(named: "sports_icon"))
             }
         }
-       
-       
-        for x in Model.leagueDetails{
-            if x.idLeague == currentEvent?.idLeague{
-                leaguebadge.sd_setImage(with: URL(string: x.strBadge),placeholderImage:UIImage(named: "sports_icon"))
-            }
-            
-        }
-        gamedate.text = currentEvent?.dateEvent
-        leagueName.text = currentEvent?.strLeague
         
-        
+//        gamedate.text = currentEvent?.dateEvent
         homeTeamName.text = currentEvent?.strHomeTeam
         homeTeamScore.text = currentEvent?.intHomeScore
-        //awayTeamLogo.sd_setImage(with: URL(string: atLogo), placeholderImage:UIImage(named: "sports_icon"))
+        
         awayTeamName.text = currentEvent?.strAwayTeam
         awayTeamScore.text = currentEvent?.intAwayScore
     }

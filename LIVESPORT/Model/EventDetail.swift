@@ -1,17 +1,17 @@
 //
-//  Event.swift
+//  EventDetail.swift
 //  LIVESPORT
 //
-//  Created by Home on 10/9/21.
+//  Created by Home on 11/2/21.
 //
 
 import Foundation
 
-struct Events : Codable {
-    let events : [Event]
-    
+struct EventDetails : Codable {
+    let eventDetais : [EventDetail]
+    //let results : [Event]
 }
-struct Event : Codable {
+struct EventDetail : Codable {
     
     let dateEvent : String?
     let idEvent : String?
@@ -30,8 +30,5 @@ struct Event : Codable {
     let strHomeLineupMidfield: String?
     let strHomeLineupForward: String?
     let strHomeLineupSubstitutes: String?
-    let strDescriptionEN: String?
-    let strThumb: String?
-    let strStatus: String?
-    let strPostponed: String?
+    
 }
